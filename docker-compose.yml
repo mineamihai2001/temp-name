@@ -1,0 +1,8 @@
+version: '0.1'
+services:
+  mongodb_container:
+    image: mongo:latest
+    env_file:
+      - .env.dev
+    ports:
+      - 27017:2701
