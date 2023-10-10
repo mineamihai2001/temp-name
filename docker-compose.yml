@@ -1,8 +1,24 @@
 version: '0.1'
 services:
-  mongodb_container:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    container_name: temp_name_api_v1
+    working_dir: /service
+    volumes:
+      - .:/service
+    env_file:
+      - .env
+    environment:
+      - APP_PORT=$APP_PORT
+    ports:
+      - "8888:${APP_PORT}"
+    command: pnpm run start:dev
+  mongodb:
     image: mongo:latest
     env_file:
-      - .env.dev
+      - .env
     ports:
       - 27017:2701
