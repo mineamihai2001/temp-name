@@ -16,9 +16,16 @@ services:
     ports:
       - "8888:${APP_PORT}"
     command: pnpm run start:dev
+    depends_on:
+      - mongodb
   mongodb:
     image: mongo:latest
     env_file:
       - .env
+    environment:
+      # - MONGO_INITDB_ROOT_USERNAME=admin
+      # - MONGO_INITDB_ROOT_PASSWORD=admin
+      # - MONGO_INITDB_DATABASE=local
+      - DB_PORT=$DB_PORT
     ports:
-      - 27017:2701
+      - "27017:${DB_PORT}"
