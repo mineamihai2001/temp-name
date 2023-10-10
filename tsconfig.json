@@ -20,7 +20,7 @@
         "paths": {
             "@api/*": ["api/*"],
             "@application/*": ["application/*"],
-            "@domain/*": ["application/*"],
+            "@domain/*": ["domain/*"],
             "@infrastructure/*": ["infrastructure/*"]
         }
     },
