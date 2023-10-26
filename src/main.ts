@@ -1,7 +1,8 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./port/adapter/nest/app.module";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
-import { ConfigHelper } from "helpers/config";
+import { ConfigHelper, EnvironmentType } from "helpers/config";
+import { Console } from "@helpers/console";
 
 async function bootstrap(): Promise<void> {
     const config = ConfigHelper.getInstance().getConfig();
@@ -18,7 +19,11 @@ async function bootstrap(): Promise<void> {
 
     await app.listen(config.app.port);
 
-    console.log(`App running on http://[::1]:${config.app.port}/api`);
+    if (config.nodeEnv === EnvironmentType.DEV) {
+        Console.writeLine();
+        Console.success(`>>> App running on http://[::1]:${config.app.port}`);
+        Console.info(`>>> Api documentation available at http://[::1]:${config.app.port}/api`);
+    }
 }
 
 bootstrap();
