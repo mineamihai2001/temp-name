@@ -18,10 +18,11 @@
         "forceConsistentCasingInFileNames": false,
         "noFallthroughCasesInSwitch": false,
         "paths": {
-            "@api/*": ["api/*"],
+            "@port/*": ["port/*"],
             "@application/*": ["application/*"],
             "@domain/*": ["domain/*"],
-            "@infrastructure/*": ["infrastructure/*"]
+            "@services/*": ["services/*"],
+            "@helpers/*": ["helpers/*"]
         }
     },
     "exclude": ["node_modules"]

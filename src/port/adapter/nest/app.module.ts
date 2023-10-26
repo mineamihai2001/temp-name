@@ -1,11 +1,10 @@
 import { Module } from "@nestjs/common";
-import { MongoModule } from "port/adapter/mongo";
 import { AppController } from "port/adapter/nest/controllers";
+import { MembersModule } from "./modules/members.modules";
 
 @Module({
-    imports: [MongoModule],
+    imports: [MembersModule],
     controllers: [AppController],
     providers: [],
 })
 export class AppModule {}
-
